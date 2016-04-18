@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="instafeed.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/slick.min.js"></script>
+	<style type="text/css">
+	/* Slider */
+.slick-slider{position: relative;display: block;-moz-box-sizing: border-box;box-sizing: border-box;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;-webkit-touch-callout: none;-khtml-user-select: none;-ms-touch-action: pan-y;touch-action: pan-y;-webkit-tap-highlight-color: transparent;}
+.slick-list{position: relative;display: block;overflow: hidden;margin: 0;padding: 0;}
+.slick-list:focus{outline: none;}
+.slick-list.dragging{cursor: pointer;cursor: hand;}
+.slick-slider .slick-track,.slick-slider .slick-list{-webkit-transform: translate3d(0, 0, 0);-moz-transform: translate3d(0, 0, 0);-ms-transform: translate3d(0, 0, 0);-o-transform: translate3d(0, 0, 0);transform: translate3d(0, 0, 0);}
+.slick-track{position: relative;top: 0;left: 0;display: block;}
+.slick-track:before,.slick-track:after{display: table;content: '';}
+.slick-track:after{clear: both;}
+.slick-loading .slick-track{visibility: hidden;}
+.slick-slide{display: none;float: left;height: 100%;min-height: 1px;}
+[dir='rtl'] .slick-slide{float: right;}
+.slick-slide img{display: block;}
+.slick-slide.slick-loading img{display: none;}
+.slick-slide.dragging img{pointer-events: none;}
+.slick-initialized .slick-slide{display: block;}
+.slick-loading .slick-slide{visibility: hidden;}
+.slick-vertical .slick-slide{display: block;height: auto;border: 1px solid transparent;}
+
+
+span.likes {
+    display: block;
+    font-weight: bold;
+    color: #7d0040;
+    text-align: center;
+    font-size: 20px;
+    font-family: "arial";
+}
+
+a.animation {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+a.animation > img {
+    width: 100%;
+}
+	</style>
+</head>
+<body>
+	Prueba de Feed Instagram
+	<!-- TOKEN: http://instagram.pixelunion.net/#access_token=175020448.1677ed0.eefc799c20534753a3c188f4d6f12489 -->
+	<!-- userId : http://www.otzberg.net/iguserid/index.php -->
+	<!-- Libreria https://github.com/stevenschobert/instafeed.js -->
+	<div id="instafeed"></div>
+	<script type="text/javascript">
+	    $(document).ready(function(){
+		    var feed = new Instafeed({
+		        get: 'user',
+		        tagName: 'doggies',
+		        clientId: '026c8fc0978c4e15bcecd1b513d1b3e9',
+		        userId:'1429990896',
+		        accessToken: '175020448.1677ed0.eefc799c20534753a3c188f4d6f12489',
+		        template: '<div><a class="animation" href="{{link}}"><img src="{{image}}" /></a><span class="likes">{{likes}}</span></div>'
+		    });
+		    feed.run();
+
+		    setTimeout(function(){
+		    	$('#instafeed').slick({
+						slidesToShow: 8,
+						slidesToScroll: 4,
+						autoplay: true,
+						dots:false
+				});
+
+		    },500);
+
+	    });
+	</script>
+</body>
+</html>
